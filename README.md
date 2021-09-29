@@ -17,17 +17,17 @@
 - has_many : orders
 
 ## items テーブル
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| name          | string     | null: false                    |
-| text          | text       | null: false                    |
-| category_id   | integer    | null: false                    |
-| condition_id  | integer    | null: false                    |
-| fee_id        | integer    | null: false                    |
-| prefecture_id | integer    | null: false                    |
-| day_id        | integer    | null: false                    |
-| price         | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| text            | text       | null: false                    |
+| category_id     | integer    | null: false                    |
+| condition_id    | integer    | null: false                    |
+| fee_id          | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| shipping_day_id | integer    | null: false                    |
+| price           | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to : user
@@ -43,7 +43,7 @@
 ### Association
 - belongs_to : item
 - belongs_to : user
-- belongs_to : delivery
+- has_one    : delivery
 
 ## deliverys テーブル
 | Column        | Type       | Options                        |
@@ -57,5 +57,5 @@
 | order         | references | null: false, foreign_key: true |
 
 ### Association
-- has_one : order
+- belongs_to : order
 
