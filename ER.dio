@@ -13,7 +13,7 @@
                 <mxCell id="19" value="items" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="440" y="160" width="160" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="・name&#10;・text&#10;・category_id&#10;・condition_id&#10;・fee_id&#10;・prefecture_id&#10;・day_id&#10;・price&#10;・user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="19" vertex="1">
+                <mxCell id="20" value="・name&#10;・text&#10;・category_id&#10;・condition_id&#10;・fee_id&#10;・prefecture_id&#10;・shipping_day_id&#10;・price&#10;・user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="19" vertex="1">
                     <mxGeometry y="26" width="160" height="134" as="geometry"/>
                 </mxCell>
                 <mxCell id="26" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;startArrow=ERmandOne;entryX=0.006;entryY=0.574;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="20" edge="1">
