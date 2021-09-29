@@ -1,24 +1,57 @@
 # README
+# users テーブル
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ------------|
+| nickname            | string     | null: false |
+| email               | string     | null: false |
+| encrypted_password  | string     | null: false |
+| family_name         | string     | null: false |
+| first_name          | string     | null: false |
+| family_name_kana    | string     | null: false |
+| birth_yeah          | string     | null: false |
+| birth_month         | string     | null: false |
+| birth_day           | string     | null: false |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- has_many : items
 
-Things you may want to cover:
+## items テーブル
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| image       | references | null: false |
+| name        | string     | null: false |
+| text        | text       | null: false |
+| category    | references | null: false |
+| condition   | references | null: false |
+| price       | integer    | null: false |
 
-* Ruby version
+### Association
+- belongs_to : users
+- belongs_to : orders
+- belongs_to : delivery
 
-* System dependencies
+## orders テーブル
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| postal      | integer    | null: false |
+| prefecture  | string     | null: false |
+| city        | string     | null: false |
+| adress1     | string     | null: false |
+| adress2     | string     |             |
+| telephone   | string     | null: false |
 
-* Configuration
+### Association
+- has_many   : items
+- belongs_to : delivery
 
-* Database creation
+## delivery テーブル
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| fee         | references | null: false |
+| prefecture  | string     | null: false |
+| day         | integer    | null: false |
 
-* Database initialization
+### Association
+- has_many   : items
+- belongs_to : orders
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
