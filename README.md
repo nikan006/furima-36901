@@ -8,50 +8,54 @@
 | family_name         | string     | null: false |
 | first_name          | string     | null: false |
 | family_name_kana    | string     | null: false |
-| birth_yeah          | string     | null: false |
-| birth_month         | string     | null: false |
-| birth_day           | string     | null: false |
+| first_name_kana     | string     | null: false |
+| birth_date          | date       | null: false |
+
 
 ### Association
 - has_many : items
+- has_many : orders
 
 ## items テーブル
-| Column      | Type       | Options     |
-| ----------- | ---------- | ----------- |
-| image       | references | null: false |
-| name        | string     | null: false |
-| text        | text       | null: false |
-| category    | references | null: false |
-| condition   | references | null: false |
-| price       | integer    | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| text          | text       | null: false                    |
+| category_id   | references | null: false                    |
+| condition_id  | references | null: false                    |
+| fee_id        | references | null: false                    |
+| prefecture_id | references | null: false                    |
+| day_id        | references | null: false                    |
+| price         | integer    | null: false                    |
+| user_id       | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to : users
-- belongs_to : orders
-- belongs_to : delivery
+- has_one    : orders
 
 ## orders テーブル
-| Column      | Type       | Options     |
-| ----------- | ---------- | ----------- |
-| postal      | integer    | null: false |
-| prefecture  | string     | null: false |
-| city        | string     | null: false |
-| adress1     | string     | null: false |
-| adress2     | string     |             |
-| telephone   | string     | null: false |
+| Column      | Type       | Options                       |
+| ----------- | ---------- | ----------------------------- |
+| item_id     | references | null: false, foreign_key: true|
+| user_id     | references | null: false, foreign_key: true|
+
 
 ### Association
-- has_many   : items
-- belongs_to : delivery
+- belongs_to : items
+- belongs_to : users
+- has_one    : delivery
 
 ## delivery テーブル
-| Column      | Type       | Options     |
-| ----------- | ---------- | ----------- |
-| fee         | references | null: false |
-| prefecture  | string     | null: false |
-| day         | integer    | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| zip_code      | integer    | null: false                    |
+| prefecture_id | references | null: false                    |
+| city          | string     | null: false                    |
+| adress1       | string     | null: false                    |
+| adress2       | string     |                                |
+| telephone     | string     | null: false                    |
+| order_id      | references | null: false, foreign_key: true |
 
 ### Association
-- has_many   : items
-- belongs_to : orders
+- has_many : orders
 
