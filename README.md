@@ -32,6 +32,15 @@
 ### Association
 - belongs_to : user
 - has_one    : order
+- belongs_to : category
+
+## categorys テーブル
+| Column      | Type       | Options                       |
+| ----------- | ---------- | ----------------------------- |
+| name        | integer    | null: false                   |
+
+### Association
+-has_many  :items
 
 ## orders テーブル
 | Column      | Type       | Options                       |
