@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :user
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :fee
@@ -14,8 +15,8 @@ class Item < ApplicationRecord
     validates :price
   end
   
-  validates :price, numericality: {with:/\A[0-9]+\z/, message: "Half-width number"}
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: "Out of setting range"}
+  validates :price, numericality: {with:/\A[0-9]+\z/, message: "half-width number"}
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: "out of setting range"}
 
   with_options presence: true, numericality: { other_than: 1, message: "can't be blank"} do
     validates :category_id
