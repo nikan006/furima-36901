@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
 
   def index
-    @order = Order.new(order_params)
+    @order = Order.new
   end
 
   def create
+    binding.pry
   end
 
 end
