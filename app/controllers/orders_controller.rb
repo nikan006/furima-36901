@@ -1,24 +1,25 @@
 class OrdersController < ApplicationController
 
   def index
-    @order = Order.new
     @item = Item.find(params[:item_id])
+    @order = OrderDeliverys.new
   end
 
   def create
-    @order = Order.new(order_params)
+    @item = Item.find(params[:item_id])
+    @order = OrderDeliverys.new(order_params)
     if @order.valid?
       @order.save
-      redirect_to item_orders_path
+      redirect_to root_path
     else
-      render :new
+      render :index
     end
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:nickname, :email, :encrypted_password, :first_name, :family_name, :first_name_kana, :family_name_kana, :birth_date, :name, :text, :image, :price, :category_id, :condition_id, :fee_id, :prefecture_id, :shipping_day_id, :zip_code, :city, :telephone, :adress1)
+    params.require(:order_deliverys).permit(:zip_code, :city, :prefecture_id, :adress1, :adress2, :telephone).merge(user_id: current_user.id, item_id: @item.id)
   end
 
 end
