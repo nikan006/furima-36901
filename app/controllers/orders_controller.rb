@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.find(params[:item_id])
     @order = OrderDeliverys.new(order_params)
     if @order.valid?
@@ -19,7 +20,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_deliverys).permit(:zip_code, :city, :prefecture_id, :adress1, :adress2, :telephone).merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:order_deliverys).permit(:zip_code, :city, :prefecture_id, :adress1, :adress2, :telephone).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
   end
 
 end
