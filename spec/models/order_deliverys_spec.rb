@@ -55,6 +55,11 @@ RSpec.describe OrderDeliverys, type: :model do
         @order_deliverys.valid?
         expect(@order_deliverys.errors.full_messages).to include("Telephone is invalid")
       end
+      it "tokenが空だと保存できないこと" do
+        @order_deliverys.token = ""
+        @order_deliverys.valid?
+        expect(@order_deliverys.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
