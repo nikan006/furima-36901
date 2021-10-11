@@ -50,7 +50,7 @@ RSpec.describe OrderDeliverys, type: :model do
         @order_deliverys.valid?
         expect(@order_deliverys.errors.full_messages).to include("Telephone can't be blank")
       end
-      it "電話番号は10桁以上11桁以内の半角数値のみ保存可能なこと" do
+      it "電話番号は9桁以下では購入できない" do
         @order_deliverys.telephone = "1234"
         @order_deliverys.valid?
         expect(@order_deliverys.errors.full_messages).to include("Telephone is invalid")
